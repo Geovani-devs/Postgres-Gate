@@ -1,0 +1,86 @@
+## NIVEL BÁSICO (1–17)
+
+1. El desarrollador backend solicita una consulta que devuelva el nombre y apellido de todos los actores para alimentar el listado del panel de administración.  
+   **Indicación:** Tabla `actor`. Las columnas que necesitas son `first_name` y `last_name`; no hace falta filtrar, solo seleccionar.
+
+SELECT * FROM actor
+SELECT first_name, last_name FROM actor
+
+2. En el catálogo web se debe mostrar solo las películas con duración mayor a 120 minutos. Se requiere la consulta que devuelva los títulos.  
+   **Indicación:** Tabla `film`. Filtra por la columna `length` (> 120) y devuelve `title`.
+
+SELECT * FROM film
+SELECT title FROM film where length > (120);
+
+3. Marketing necesita localizar a los clientes con apellido exactamente "Williams" para hacer una campaña especial. Proporciona la consulta que devuelva nombre y apellido.  
+   **Indicación:** Tabla `customer`. Usa WHERE con `last_name = 'Williams'` y selecciona `first_name` y `last_name`.
+
+SELECT * FROM customer
+SELECT first_name, last_name FROM customer where last_name = 'WILLIAMS'
+
+4. Para el dropdown list de categorías en el front se necesita un listado de todos los nombres de categoría ordenados alfabéticamente.  
+   **Indicación:** Tabla `category`. Selecciona la columna `name` y ordena con ORDER BY name.
+
+SELECT * FROM category
+SELECT name FROM category ORDER BY name ASC
+
+
+5. Se está desarrollando la ficha de películas y se requiere mostrar título, año de estreno y duración solo para las películas del año 2006.  
+   **Indicación:** Tabla `film`. Columnas: `title`, `release_year`, `length`. Filtra por `release_year = 2006`.
+
+SELECT * FROM film
+SELECT title, release_year, length FROM film where release_year = 2006;
+
+
+6. Inventario solicita el siguiente dato: conocer el número total de películas en catálogo. Proporciona la consulta que devuelva ese conteo.  
+   **Indicación:** Tabla `film`. Usa la función de agregación COUNT(*) para obtener el total de filas.
+
+SELECT * FROM film
+
+
+7. Para el dropdown list de países en el formulario de direcciones se necesita la lista de nombres de países ordenados alfabéticamente.  
+   **Indicación:** Tabla `country`. La columna del nombre del país es `country`; ordénala alfabéticamente.
+
+8. Comercial solicita un listado de películas con tarifa de alquiler mayor o igual a 4.99, mostrando título y tarifa, para revisar precios.  
+   **Indicación:** Tabla `film`. Filtra con `rental_rate >= 4.99` y devuelve `title` y `rental_rate`.
+
+9. El desarrollador backend necesita el nombre y apellido de los actores cuyo nombre comienza por 'A' para una funcionalidad de búsqueda por inicial.  
+   **Indicación:** Tabla `actor`. Usa WHERE con un patrón tipo `first_name LIKE 'A%'` y selecciona first_name y last_name.
+
+10. Se requiere una búsqueda por palabra clave: mostrar los títulos de películas cuya descripción contenga la palabra "shark".  
+    **Indicación:** Tabla `film`. La descripción está en `description`; usa ILIKE (o LIKE) con '%shark%' para buscar sin importar mayúsculas y devuelve `title`.
+
+11. Para el formulario de alta de películas se necesita el listado de idiomas disponibles en el sistema, ordenado por nombre.  
+    **Indicación:** Tabla `language`. Selecciona la columna `name` y ordénala; es una tabla pequeña de referencia.
+
+12. se solicita el reporte de tiendas: debe incluir el número total de clientes por tienda. Proporciona la consulta que devuelva store_id y total de clientes.  
+    **Indicación:** Tabla `customer`. Agrupa por `store_id` y usa COUNT(*) para el total de clientes por grupo.
+
+13. Ventas solicita un listado de películas con coste de reemplazo entre 15 y 25 (incluidos), mostrando título y coste de reemplazo.  
+    **Indicación:** Tabla `film`. Filtra `replacement_cost` con BETWEEN 15 AND 25 y devuelve `title` y `replacement_cost`.
+
+14. Se va a dar de alta un nuevo actor desde el panel: nombre "Juan", apellido "Pérez". Se requiere el INSERT en la tabla `actor` (incluir `last_update` con la fecha actual).  
+    **Indicación:** Tabla `actor`. INSERT con first_name, last_name y last_update (usa NOW() para la fecha). actor_id es SERIAL, se genera solo.
+
+15. El alta del actor "Juan Pérez" fue errónea y se debe revertir. Se solicita el DELETE que elimine ese actor de la tabla `actor`.  
+    **Indicación:** Tabla `actor`. DELETE WHERE first_name = 'Juan' AND last_name = 'Pérez' para eliminar solo esa fila.
+
+16. Un cliente reportó que su apellido está mal; se debe corregir el apellido del cliente con `customer_id = 1` a "García". Proporciona el UPDATE en `customer`.  
+    **Indicación:** Tabla `customer`. UPDATE SET last_name = 'García' (y last_update = NOW() si existe) WHERE customer_id = 1.
+
+17. En la pantalla de detalle de película se debe mostrar también la categoría. Se requiere la consulta que devuelva título de película y nombre de categoría (usar `film`, `film_category` y `category`).  
+    **Indicación:** Tablas `film`, `film_category`, `category`. film se relaciona con category a través de film_category (film_id y category_id). Haz JOIN entre las tres y devuelve title y name de categoría.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
